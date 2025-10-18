@@ -14,19 +14,39 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Form submission handler
-const contactForm = document.querySelector('.contact-form form');
+const contactForm = document.querySelector('#contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
+        // Get form message element
+        const formMessage = document.getElementById('formMessage');
+        
         // Get form data
         const formData = new FormData(this);
         
-        // Show success message
-        alert('Thank you for your message! We will get back to you soon.');
+        // Validate that we have data
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const message = formData.get('message');
         
-        // Reset form
-        this.reset();
+        if (name && email && message) {
+            // Show success message
+            formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+            formMessage.className = 'form-message success';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        } else {
+            // Show error message
+            formMessage.textContent = 'Please fill in all required fields.';
+            formMessage.className = 'form-message error';
+        }
     });
 }
 
