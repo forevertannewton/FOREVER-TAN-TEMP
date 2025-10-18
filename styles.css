@@ -427,6 +427,7 @@ body {
 }
 
 /* Responsive Design */
+/* Using 767px to avoid overlap with standard tablet min-width of 768px */
 @media (max-width: 767px) {
     .nav-menu {
         gap: 1rem;
