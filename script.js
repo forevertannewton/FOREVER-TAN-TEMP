@@ -37,7 +37,6 @@ navLinks.forEach(link => {
 });
 
 // Navbar scroll effect
-let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
@@ -48,8 +47,6 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.2)';
     }
-    
-    lastScroll = currentScroll;
 });
 
 // Form submission handler
